@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rack-dev-mark'
+gem 'rails-i18n'
 
 group :production, :staging do
   gem 'rails_12factor'
@@ -57,6 +59,10 @@ group :development do
   gem 'spring'
   gem 'rubocop'
   gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'view_source_map'
+  gem 'rails-footnotes', '~> 4.0'
 end
 
 group :test do

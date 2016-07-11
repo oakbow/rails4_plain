@@ -42,11 +42,16 @@ GEM
       rake (>= 10.4, < 12.0)
     arel (6.0.3)
     ast (2.3.0)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     brakeman (3.3.2)
     builder (3.2.2)
     byebug (9.0.5)
+    coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -106,6 +111,8 @@ GEM
     pkg-config (1.1.7)
     powerpack (0.1.1)
     rack (1.6.4)
+    rack-dev-mark (0.7.5)
+      rack (>= 1.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.6)
@@ -125,8 +132,13 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-footnotes (4.1.8)
+      rails (>= 3.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (4.0.9)
+      i18n (~> 0.7)
+      railties (~> 4.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -203,6 +215,8 @@ GEM
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.1.0)
+    view_source_map (0.1.1)
+      rails (>= 3.2)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -214,6 +228,8 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  better_errors
+  binding_of_caller
   brakeman
   byebug
   coffee-rails (~> 4.1.0)
@@ -225,7 +241,10 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   pg
+  rack-dev-mark
   rails (= 4.2.6)
+  rails-footnotes (~> 4.0)
+  rails-i18n
   rails_12factor
   rspec-rails
   rubocop
@@ -237,6 +256,7 @@ DEPENDENCIES
   spring-commands-rspec
   turbolinks
   uglifier (>= 1.3.0)
+  view_source_map
   web-console (~> 2.0)
 
 RUBY VERSION
