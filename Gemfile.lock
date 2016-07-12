@@ -110,11 +110,13 @@ GEM
     pg (0.18.4)
     pkg-config (1.1.7)
     powerpack (0.1.1)
+    puma (3.4.0)
     rack (1.6.4)
     rack-dev-mark (0.7.5)
       rack (>= 1.1)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-timeout (0.4.2)
     rails (4.2.6)
       actionmailer (= 4.2.6)
       actionpack (= 4.2.6)
@@ -243,7 +245,9 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   pg
+  puma
   rack-dev-mark
+  rack-timeout
   rails (= 4.2.6)
   rails-footnotes (~> 4.0)
   rails-i18n
