@@ -1,0 +1,11 @@
+machine:
+  timezone:
+    Asia/Tokyo
+
+test:
+  pre:
+    - bundle exec brakeman -4 -A -w 1 -z
+
+general:
+  artifacts:
+    - "/tmp/coverage"
