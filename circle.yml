@@ -5,6 +5,12 @@ machine:
 test:
   pre:
     - bundle exec brakeman -4 -A -w 1 -z
+  override:
+    - |
+        if [ -n "${BUNDLE_UPDATE}" ]; then
+          exit 0
+        fi
+        bundle exec rspec
   post:
     - |
         gem update bundler --no-document
