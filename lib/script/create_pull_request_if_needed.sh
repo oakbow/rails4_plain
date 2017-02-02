@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 export BRANCH=bundle-update-`date -u "+%Y%m%d"`
 if [ -n `git status -sb 2> /dev/null | grep Gemfile.lock` ] ; then
   git config --global user.email oakbow7@gmail.com
