@@ -13,7 +13,7 @@ test:
           gem update bundler --no-document
           gem install circleci-bundle-update-pr
           circleci-bundle-update-pr CircleCI circleci@example.com
-        fi
+#        fi
 
 general:
   artifacts:
