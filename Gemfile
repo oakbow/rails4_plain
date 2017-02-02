@@ -51,6 +51,7 @@ group :development, :test do
   gem 'brakeman', require: false
 
   gem "octokit", "~> 4.0"
+  gem 'compare_linker'
 end
 
 group :development do
