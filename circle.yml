@@ -5,15 +5,11 @@ machine:
 test:
   pre:
     - bundle exec brakeman -4 -A -w 1 -z
-  override:
+  post:
     - |
-#        if [ -z "${BUNDLE_UPDATE}" ] ; then
-#          bundle exec rspec
-#        else
-          gem update bundler --no-document
-          gem install circleci-bundle-update-pr
-          circleci-bundle-update-pr CircleCI circleci@example.com
-#        fi
+        gem update bundler --no-document
+        gem install circleci-bundle-update-pr
+        circleci-bundle-update-pr CircleCI circleci@example.com
 
 general:
   artifacts:
