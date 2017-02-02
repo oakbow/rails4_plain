@@ -83,7 +83,6 @@ Powered by [compare_linker](https://rubygems.org/gems/compare_linker)
 
         def self.client
           pp __method__
-          pp ENV["GITHUB_ACCESS_TOKEN"]
           Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
         end
         private_class_method :client
