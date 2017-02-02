@@ -28,7 +28,8 @@ module Circleci
 
         def self.need?(git_branches)
           pp __method__
-          pp
+          pp git_branches
+          pp ENV['CIRCLE_BRANCH']
           return false unless git_branches.include?(ENV['CIRCLE_BRANCH'])
           unless system("bundle update && bundle update --ruby")
             raise "Unable to execute `bundle update && bundle update --ruby`"
