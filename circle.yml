@@ -16,15 +16,16 @@ test:
     - |
         gem update bundler --no-document
         bundle update
+        bash lib/script/create_pull_request_if_needed.sh
 #        gem install circleci-bundle-update-pr
 #        circleci-bundle-update-pr oakbow oakbow7@gmail.com
 
-deployment:
-  production:
-    branch: master
-    commands:
-      - |
-          bash lib/script/create_pull_request_if_needed.sh
+#deployment:
+#  production:
+#    branch: master
+#    commands:
+#      - |
+#          bash lib/script/create_pull_request_if_needed.sh
 
 #        if [ -z "${BUNDLE_UPDATE}" ] ; then
 #          ./script/deploy-circleci.sh
