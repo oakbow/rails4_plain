@@ -19,6 +19,19 @@ test:
 #        gem install circleci-bundle-update-pr
 #        circleci-bundle-update-pr oakbow oakbow7@gmail.com
 
+deployment:
+  production:
+    branch: master
+    commands:
+      - |
+          bash lib/script/create_pull_request_if_needed.sh
+
+#        if [ -z "${BUNDLE_UPDATE}" ] ; then
+#          ./script/deploy-circleci.sh
+#        else
+#          gem install circleci-bundle-update-pr
+#          circleci-bundle-update-pr CircleCI circleci@example.com
+#        fi
 #deployment:
 #  auto-bundle-update:
 #    branch: master
