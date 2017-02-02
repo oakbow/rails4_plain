@@ -10,6 +10,7 @@ test:
         if [ -n "${BUNDLE_UPDATE}" ]; then
           exit 0
         fi
+        echo ${GITHUB_ACCESS_TOKEN}
         bundle exec rspec
   post:
     - |
