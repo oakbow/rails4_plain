@@ -3,8 +3,8 @@ machine:
     Asia/Tokyo
 
 test:
-  pre:
-    - bundle exec brakeman -4 -A -w 1 -z
+#  pre:
+#    - bundle exec brakeman -4 -A -w 1 -z
   override:
     - |
         if [ -n "${BUNDLE_UPDATE}" ]; then
@@ -16,7 +16,7 @@ test:
     - |
         gem update bundler --no-document
         bundle update simplecov
-        bundle exec ruby lib/script/send_pull_request
+        bundle exec ruby lib/script/send_pull_request.rb
 #        bash lib/script/create_pull_request_if_needed.sh
 #        gem install circleci-bundle-update-pr
 #        circleci-bundle-update-pr oakbow oakbow7@gmail.com
