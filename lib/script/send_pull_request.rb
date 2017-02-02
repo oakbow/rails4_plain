@@ -8,9 +8,9 @@ module Circleci
       module Pr
         def self.create_if_needed(git_username: nil, git_email: nil, git_branches: ["master"])
           pp __method__
-          raise "$CIRCLE_PROJECT_USERNAME isn't set" unless ENV['CIRCLE_PROJECT_USERNAME']
-          raise "$CIRCLE_PROJECT_REPONAME isn't set" unless ENV['CIRCLE_PROJECT_REPONAME']
-          raise "$GITHUB_ACCESS_TOKEN isn't set" unless ENV['GITHUB_ACCESS_TOKEN']
+          # raise "$CIRCLE_PROJECT_USERNAME isn't set" unless ENV['CIRCLE_PROJECT_USERNAME']
+          # raise "$CIRCLE_PROJECT_REPONAME isn't set" unless ENV['CIRCLE_PROJECT_REPONAME']
+          # raise "$GITHUB_ACCESS_TOKEN isn't set" unless ENV['GITHUB_ACCESS_TOKEN']
           return unless need?(git_branches)
           repo_full_name = "#{ENV['CIRCLE_PROJECT_USERNAME']}/#{ENV['CIRCLE_PROJECT_REPONAME']}"
           pp "repo_full_name"
@@ -28,6 +28,7 @@ module Circleci
 
         def self.need?(git_branches)
           pp __method__
+          pp
           return false unless git_branches.include?(ENV['CIRCLE_BRANCH'])
           unless system("bundle update && bundle update --ruby")
             raise "Unable to execute `bundle update && bundle update --ruby`"
@@ -74,6 +75,8 @@ Powered by [compare_linker](https://rubygems.org/gems/compare_linker)
         private_class_method :add_comment_of_compare_linker
 
         def self.client
+          pp __method__
+          pp ENV["GITHUB_ACCESS_TOKEN"]
           Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
         end
         private_class_method :client
