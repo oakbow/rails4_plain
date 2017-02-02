@@ -9,7 +9,7 @@ test:
     - |
         gem update bundler --no-document
         gem install circleci-bundle-update-pr
-        circleci-bundle-update-pr CircleCI circleci@example.com
+        circleci-bundle-update-pr oakbow oakbow7@gmail.com
 
 general:
   artifacts:
