@@ -43,7 +43,10 @@ module Circleci
           system("git config user.name #{git_username}")
           system("git config user.email #{git_email}")
           system("git add Gemfile.lock")
+          pp "git commit"
           system("git commit -m '$ bundle update && bundle update --ruby'")
+
+          system("git branch")
           system("git branch -M #{branch}")
           system("git push origin #{branch}")
         end
@@ -58,6 +61,7 @@ module Circleci
           pp repo_full_name
           pp ENV['CIRCLE_BRANCH']
           pp branch,title, body
+          pp head = "#{ENV['CIRCLE_PROJECT_USERNAME']}:#{branch}"
 
           # "oakbow/rails4_plain"
           # "feature/auto_bundle_updater"
@@ -68,7 +72,7 @@ module Circleci
           #   @client.create_pull_request("octokit/octokit.rb", "master", "feature-branch",
           #     "Pull Request title", "Pull Request body")
                 # create_pull_request(repo, base, head, title, body = nil, options = {})
-          client.create_pull_request(repo_full_name, ENV['CIRCLE_BRANCH'], "#{ENV['CIRCLE_PROJECT_USERNAME']}:#{branch}", title, body)
+          client.create_pull_request(repo_full_name, ENV['CIRCLE_BRANCH'], head, title, body)
         end
         private_class_method :create_pull_request
 
