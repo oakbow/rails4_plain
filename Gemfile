@@ -49,6 +49,8 @@ group :development, :test do
   gem 'faker'
   gem 'letter_opener'
   gem 'brakeman', require: false
+
+  gem "octokit", "~> 4.0"
 end
 
 group :development do

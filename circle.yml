@@ -15,8 +15,18 @@ test:
   post:
     - |
         gem update bundler --no-document
-        gem install circleci-bundle-update-pr
-        circleci-bundle-update-pr oakbow oakbow7@gmail.com
+        bundle update
+#        gem install circleci-bundle-update-pr
+#        circleci-bundle-update-pr oakbow oakbow7@gmail.com
+
+deployment:
+  auto-bundle-update:
+    branch: master
+    commands:
+      - >
+#        if [ -n "${BUNDLE_UPDATE}" ] ; then
+          bash lib/script/create_pull_request_if_needed.sh
+#        fi
 
 general:
   artifacts:
