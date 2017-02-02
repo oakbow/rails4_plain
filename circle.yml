@@ -16,8 +16,8 @@ test:
     - |
         gem update bundler --no-document
         bundle update simplecov
-#        bash lib/script/create_pull_request_if_needed.sh
         bundle exec ruby lib/script/send_pull_request
+#        bash lib/script/create_pull_request_if_needed.sh
 #        gem install circleci-bundle-update-pr
 #        circleci-bundle-update-pr oakbow oakbow7@gmail.com
 
