@@ -7,9 +7,9 @@ test:
     - bundle exec brakeman -4 -A -w 1 -z
   override:
     - |
-        if [ -z "${BUNDLE_UPDATE}" ] ; then
-          bundle exec rspec
-        else
+#        if [ -z "${BUNDLE_UPDATE}" ] ; then
+#          bundle exec rspec
+#        else
           gem update bundler --no-document
           gem install circleci-bundle-update-pr
           circleci-bundle-update-pr CircleCI circleci@example.com
