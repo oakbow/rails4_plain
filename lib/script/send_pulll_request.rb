@@ -73,3 +73,5 @@ Powered by [compare_linker](https://rubygems.org/gems/compare_linker)
     end
   end
 end
+
+Circleci::Bundle::Update::Pr.create_if_needed(git_username: 'oakbow', git_email: 'oakbow7@gmail.com', git_branches: "master")
