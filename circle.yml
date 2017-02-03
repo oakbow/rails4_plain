@@ -1,10 +1,68 @@
 machine:
   timezone:
     Asia/Tokyo
+  environment:
+#    BUNDLE_UPDATE: true
+
 
 test:
-  pre:
-    - bundle exec brakeman -4 -A -w 1 -z
+#  pre:
+#    - bundle exec brakeman -4 -A -w 1 -z
+  override:
+    - |
+        if [ -n "${BUNDLE_UPDATE}" ]; then
+          echo ${BUNDLE_UPDATE}
+          exit 0
+        fi
+        bundle exec rspec
+  post:
+    - |
+        echo ${BUNDLE_UPDATE}
+        echo $BUNDLE_UPDATE
+        echo $CIRCLE_NODE_INDEX
+        echo ${CIRCLE_NODE_INDEX}
+        echo $CIRCLE_NODE_TOTAL
+        echo ${CIRCLE_NODE_TOTAL}
+        if [ "${CIRCLE_NODE_INDEX}" = 1 ]; then
+          echo ${CIRCLE_NODE_INDEX}
+        fi
+
+#  post:
+#    - |
+#        gem update bundler --no-document
+#        gem install circleci-bundle-update-pr
+#        circleci-bundle-update-pr oakbow oakbow7@gmail.com feature/auto_bundle_updater
+#        bundle update simplecov
+#        bundle exec ruby lib/script/send_pull_request.rb
+
+
+
+#        bash lib/script/create_pull_request_if_needed.sh
+
+#deployment:
+#  production:
+#    branch: master
+#    commands:
+#      - |
+#          bash lib/script/create_pull_request_if_needed.sh
+
+#        if [ -z "${BUNDLE_UPDATE}" ] ; then
+#          ./script/deploy-circleci.sh
+#        else
+#          gem install circleci-bundle-update-pr
+#          circleci-bundle-update-pr CircleCI circleci@example.com
+#        fi
+
+deployment:
+  auto-bundle-update:
+    branch: feature/auto_bundle_updater
+    commands:
+      - >
+        if [ -n "${BUNDLE_UPDATE}" ]; then
+          gem update bundler --no-document
+          gem install circleci-bundle-update-pr
+          circleci-bundle-update-pr oakbow oakbow7@gmail.com feature/auto_bundle_updater
+        fi
 
 general:
   artifacts:
