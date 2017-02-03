@@ -15,6 +15,16 @@ test:
           exit 0
         fi
         bundle exec rspec
+  post:
+    - |
+        echo ${BUNDLE_UPDATE}
+        echo $BUNDLE_UPDATE
+        echo $CIRCLE_NODE_INDEX
+        echo ${CIRCLE_NODE_INDEX}
+        if [ "${CIRCLE_NODE_INDEX}" = 1 ]; then
+          echo ${CIRCLE_NODE_INDEX}
+        echo
+
 #  post:
 #    - |
 #        gem update bundler --no-document
@@ -51,11 +61,6 @@ deployment:
           gem install circleci-bundle-update-pr
           circleci-bundle-update-pr oakbow oakbow7@gmail.com feature/auto_bundle_updater
         fi
-        echo ${BUNDLE_UPDATE}
-        echo $CIRCLE_NODE_INDEX
-        if [ "${CIRCLE_NODE_INDEX}" = 1 ]; then
-          echo ${CIRCLE_NODE_INDEX}
-        echo
 
 general:
   artifacts:
