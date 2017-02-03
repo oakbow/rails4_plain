@@ -2,20 +2,25 @@ machine:
   timezone:
     Asia/Tokyo
 
+environment:
+  BUNDLE_UPDATE: true
+
+
 test:
 #  pre:
 #    - bundle exec brakeman -4 -A -w 1 -z
   override:
     - |
         if [ -n "${BUNDLE_UPDATE}" ]; then
+          echo ${BUNDLE_UPDATE}
           exit 0
         fi
         bundle exec rspec
-  post:
-    - |
-        gem update bundler --no-document
-        gem install circleci-bundle-update-pr
-        circleci-bundle-update-pr oakbow oakbow7@gmail.com feature/auto_bundle_updater
+#  post:
+#    - |
+#        gem update bundler --no-document
+#        gem install circleci-bundle-update-pr
+#        circleci-bundle-update-pr oakbow oakbow7@gmail.com feature/auto_bundle_updater
 #        bundle update simplecov
 #        bundle exec ruby lib/script/send_pull_request.rb
 
@@ -36,14 +41,17 @@ test:
 #          gem install circleci-bundle-update-pr
 #          circleci-bundle-update-pr CircleCI circleci@example.com
 #        fi
-#deployment:
-#  auto-bundle-update:
-#    branch: master
-#    commands:
-#      - >
-##        if [ -n "${BUNDLE_UPDATE}" ] ; then
-#          bash lib/script/create_pull_request_if_needed.sh
-##        fi
+
+deployment:
+  auto-bundle-update:
+    branch: feature/auto_bundle_updater
+    commands:
+      - >
+        if [ -n "${BUNDLE_UPDATE}" ]; then
+          gem update bundler --no-document
+          gem install circleci-bundle-update-pr
+          circleci-bundle-update-pr oakbow oakbow7@gmail.com feature/auto_bundle_updater
+        fi
 
 general:
   artifacts:
