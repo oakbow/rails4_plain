@@ -1,9 +1,8 @@
 machine:
   timezone:
     Asia/Tokyo
-
-environment:
-  BUNDLE_UPDATE: true
+  environment:
+    BUNDLE_UPDATE: true
 
 
 test:
