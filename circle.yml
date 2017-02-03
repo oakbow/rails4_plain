@@ -51,6 +51,10 @@ deployment:
           gem install circleci-bundle-update-pr
           circleci-bundle-update-pr oakbow oakbow7@gmail.com feature/auto_bundle_updater
         fi
+        echo ${CIRCLE_NODE_INDEX}
+        if [ "${CIRCLE_NODE_INDEX}" = 1 ]; then
+          echo ${CIRCLE_NODE_INDEX}
+        echo
 
 general:
   artifacts:
