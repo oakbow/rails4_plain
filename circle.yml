@@ -21,9 +21,11 @@ test:
         echo $BUNDLE_UPDATE
         echo $CIRCLE_NODE_INDEX
         echo ${CIRCLE_NODE_INDEX}
+        echo $CIRCLE_NODE_TOTAL
+        echo ${CIRCLE_NODE_TOTAL}
         if [ "${CIRCLE_NODE_INDEX}" = 1 ]; then
           echo ${CIRCLE_NODE_INDEX}
-        echo
+        fi
 
 #  post:
 #    - |
