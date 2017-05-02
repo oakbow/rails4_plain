@@ -71,3 +71,4 @@ group :test do
   gem 'simplecov', require: false
 end
 
+gem 'nokogiri', '>= 1.7.1'
